@@ -1,1 +1,20 @@
-package homework.homework1;public class IfForExample {    public static void main(String[] args) {        int a = 5;        int b = 10;        if (a > b) {            System.out.println("variable a is greater than variable b");        } else {            System.out.println("variable b is greater than variable a");        }        for (int i = a; i <= b; i++) {            System.out.print(i + ", ");        }        System.out.println();        char c = (char) a;        char v = (char) b;        System.out.println(c + " " + v);    }}
+package homework.homework1;
+
+public class IfForExample {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 10;
+        if (a > b) {
+            System.out.println("Variable a is greater than variable b");
+        } else {
+            System.out.println("Variable b is greater than variable b ");
+        }
+        for (int i = a; i <= b; i++) {
+            System.out.print(i + ", ");
+        }
+        char ch = (char) a;
+        char ch1 = (char) b;
+        System.out.println(ch + " " + ch1);
+
+    }
+}
