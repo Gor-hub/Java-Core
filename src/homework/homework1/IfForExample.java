@@ -12,9 +12,7 @@ public class IfForExample {
         for (int i = a; i <= b; i++) {
             System.out.print(i + ", ");
         }
-        char ch = (char) a;
-        char ch1 = (char) b;
-        System.out.println(ch + " " + ch1);
+
 
     }
 }
