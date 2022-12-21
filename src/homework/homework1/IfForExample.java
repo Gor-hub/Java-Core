@@ -18,7 +18,10 @@ public class IfForExample {
         for (int i = min; i <= max; i++) {
             System.out.print(i + ", ");
         }
-
-
+        System.out.println();
+         char ch1 = (char) a;
+         char ch2 = (char) b;
+        System.out.println(ch1);
+        System.out.println(ch2);
     }
 }
