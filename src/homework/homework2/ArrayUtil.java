@@ -9,10 +9,10 @@ public class ArrayUtil {
             System.out.print(array[i] + " ");
         }
         for (int i = 0; i <= array.length - 1; i++) {
-            if (max <= array[i])
+            if (max < array[i])
                 max = array[i];
 
-            if (min >= array[i])
+            if (min > array[i])
                 min = array[i];
         }
         System.out.println();
