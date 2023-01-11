@@ -8,8 +8,8 @@ public class ArraySpaceExample {
 
         int beginSpaceCount = 0;
         int endSpaceCount = 0;
-        for (int i = 0; i < spaceArray.length; i++) {
-            if (spaceArray[i] == ' ') {
+        for (char value : spaceArray) {
+            if (value == ' ') {
                 ++beginSpaceCount;
             } else {
                 break;
@@ -23,7 +23,6 @@ public class ArraySpaceExample {
             }
         }
         char[] resalt = new char[spaceArray.length - beginSpaceCount - endSpaceCount];
-        int a = 0;
         for (int i = 0; i < resalt.length; i++) {
             resalt[i] = spaceArray[beginSpaceCount];
             beginSpaceCount++;
@@ -51,7 +50,7 @@ public class ArraySpaceExample {
                 break;
             }
         }int a = 0;
-        for (int i = 0; i < spaceArray.length - 1; i++) {
+        for (int i = 0; i < spaceArray.length; i++) {
             if (i >= beginSpaceCount && i < (spaceArray.length - endSpaceCount)) {
                 resalt[a] = spaceArray[i];
                 a++;

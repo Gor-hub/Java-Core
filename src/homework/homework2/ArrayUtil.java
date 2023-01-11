@@ -15,7 +15,7 @@ public class ArrayUtil {
             if (min > array[i])
                 min = array[i];
         }
-        int enenElements = 0;
+        int evenenElements = 0;
         int oddElements = 0;
         int averageValue;
         int sumOfElements = 0;
@@ -26,7 +26,7 @@ public class ArrayUtil {
         System.out.print("Even elements of the array: ");
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
-                enenElements++;
+                evenenElements++;
                 System.out.print(array[i] + " ");
             }
         }
@@ -45,8 +45,8 @@ public class ArrayUtil {
         averageValue = sumOfElements / array.length;
         System.out.println("Average value of the array: " + averageValue);
         System.out.println("Sum of array elements: " + sumOfElements);
-        System.out.println("Quantity of even elements: " + enenElements);
-        System.out.println("Quantity of odd elements: " + oddElements);
+        System.out.println("Count of even elements: " + evenenElements);
+        System.out.println("Count of odd elements: " + oddElements);
         System.out.println("First element of the array: " + array[0]);
         System.out.println("Last element of the array: " + array[array.length - 1]);
         if (array.length % 2 != 0) {
