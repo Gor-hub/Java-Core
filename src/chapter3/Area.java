@@ -1,4 +1,4 @@
-package capter3;
+package chapter3;
 
 public class Area {
     public static void main(String[] args) {
