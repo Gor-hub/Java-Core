@@ -3,7 +3,7 @@ package homework.homework9;
 public class Stack {
 
     char[] array = new char[10];
-    int tos;
+   int tos;
 
     public Stack() {
         tos = -1;
@@ -33,5 +33,8 @@ public class Stack {
             arr[i] = array[i];
         }
         array = arr;
+    }
+    int getTos(){
+        return tos;
     }
 }

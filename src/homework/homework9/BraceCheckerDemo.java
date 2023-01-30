@@ -8,8 +8,12 @@ public class BraceCheckerDemo {
         BraceChecker brace = new BraceChecker("Hello [from) (Java}");
         brace.check();
         System.out.println();
-        BraceChecker brace1 = new BraceChecker("Hello (from) {Java}");
+        BraceChecker brace1 = new BraceChecker("Hello from) {Java}");
         brace1.check();
+        System.out.println();
+        BraceChecker brace2 = new BraceChecker("Hello {from {Java}");
+        brace2.check();
+
         System.out.println();
         Scanner sc = new Scanner(System.in);
         String text = sc.nextLine();
