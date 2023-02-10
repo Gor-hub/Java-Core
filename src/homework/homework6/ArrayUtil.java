@@ -3,9 +3,14 @@ package homework.homework6;
 public class ArrayUtil {
     public void maxOfArray(int[] array) {
         int max = array[0];
-        for (int i = 1; i < array.length; i++) {
+       /* for (int i = 1; i < array.length; i++) {
             if (max < array[i]) {
                 max = array[i];
+            }
+        }*/
+        for (int i : array) {
+            if (i > max){
+               max = i;
             }
         }
         System.out.println("max element of array: " + max);
@@ -14,9 +19,14 @@ public class ArrayUtil {
 
     public void minOfArray(int[] array) {
         int min = array[0];
-        for (int i = 1; i < array.length; i++) {
+        /*for (int i = 1; i < array.length; i++) {
             if (min > array[i]) {
                 min = array[i];
+            }
+        }*/
+        for (int i : array) {
+            if (i < min) {
+                min = i;
             }
         }
         System.out.println("min element of array: " + min);
