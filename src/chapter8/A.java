@@ -4,7 +4,9 @@ public class A {
     int x = 1;
     int y = 1;
 
-    void shoow() {
-        System.out.println("print method of A class ");
+    public A(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
+
 }
