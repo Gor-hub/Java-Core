@@ -21,7 +21,6 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
             switch (command) {
                 case EXIT:
                     isRan = false;
-
                     break;
                 case ADD_DOCTOR:
                     addDoctor();
@@ -44,6 +43,8 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
                 case PRINT_TODAYS_PATIENTS:
                     personStorage.printTodaysPatient();
                     break;
+                default:
+                    System.out.println("Wrong command");
             }
         }
     }
@@ -53,10 +54,7 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
         System.out.println("Please input doctor's id");
         String id = scanner.nextLine();
         if (personStorage.getDoctorById(id) != null) {
-            Patient[] patients = personStorage.searchPatientsByDoctorId(id);
-            if (patients != null) {
-                personStorage.printPatients(patients);
-            } else System.out.println("Doctor with id " + id + " does not have patients!");
+            personStorage.searchPatientsByDoctorId(id);
         } else {
             System.out.println("Doctor with id " + id + " does not exist");
         }
@@ -71,12 +69,12 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
         Patient patientById = personStorage.getaPatientById(patientId);
         if (patientById == null) {
             String doctorId = patientData[4];
-            Doctor doctorById = personStorage.searchDoctorDataById(doctorId);
+            Doctor doctorById = personStorage.getDoctorById(doctorId);
             if (doctorById != null) {
                 Date date = stringToDate(patientData[5]);
                 if (personStorage.checkRegisterTime(date)) {
                     Patient patient = new Patient(patientId, patientData[1], patientData[2], patientData[3], doctorById, date);
-                    personStorage.addPatients(patient);
+                    personStorage.addPerson(patient);
                     System.out.println("Patient was added successfully");
                 } else {
                     System.out.println("This time is busy!");
@@ -98,10 +96,10 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
         Doctor doctorById = personStorage.getDoctorById(doctorId);
         if (doctorById == null) {
             Doctor doctor = new Doctor(doctorData[0], doctorData[1], doctorData[2], doctorData[3], doctorData[4], doctorData[5]);
-            personStorage.addDoctors(doctor);
+            personStorage.addPerson(doctor);
             System.out.println("Doctor was added successfully");
         } else {
-            System.out.println("Person with id " + doctorById.getId() + " is already exists");
+            System.out.println("Person with id " + doctorId + " is already exists");
         }
     }
 
@@ -120,19 +118,14 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
         personStorage.printAllDoctors();
         System.out.println("Please input profession");
         String profession = scanner.nextLine();
-        Doctor[] doctor = personStorage.searchDoctorByProfession(profession);
-        if (doctor == null) {
-            System.out.println("Doctor with profession " + profession + " does not exists");
-        } else {
-            personStorage.printDoctors(doctor);
-        }
+        personStorage.searchDoctorByProfession(profession);
     }
 
     private static void changeDoctorDataById() {
         personStorage.printAllDoctors();
         System.out.println("Please input id");
         String id = scanner.nextLine();
-        Doctor doctor = personStorage.searchDoctorDataById(id);
+        Doctor doctor = personStorage.getDoctorById(id);
         if (doctor != null) {
             boolean isRan = true;
             while (isRan) {
@@ -167,6 +160,8 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
                         String profession = scanner.nextLine();
                         doctor.setProfession(profession);
                         break;
+                    default:
+                        System.out.println("Wrong command");
                 }
                 System.out.println(doctor);
             }
