@@ -1,12 +1,13 @@
 package homework.employee.storage;
 
+import homework.employee.model.Company;
 import homework.employee.model.Employee;
 
 public class EmployeeStorage {
     private Employee[] employees = new Employee[10];
     private int size = 0;
 
-    public void addEmployee(Employee employee) {
+    public void add(Employee employee) {
         if (employees.length == size) {
             extend();
         }
@@ -60,19 +61,14 @@ public class EmployeeStorage {
     }
 
 
-    public void searchByCompany(String companyName) {
-        boolean found = false;
+    public void searchByCompany(Company company) {
         for (int i = 0; i < size; i++) {
             Employee employee = employees[i];
-            if (employees[i].getCompany().contains(companyName)) {
+            if (employee.getCompany().equals(company)) {
                 System.out.println(employee);
-                found = true;
             }
         }
 
-        if (!found) {
-            System.out.println("Employee from " + companyName + " company not found!");
-        }
     }
 
 }

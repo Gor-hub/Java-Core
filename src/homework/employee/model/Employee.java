@@ -1,5 +1,7 @@
 package homework.employee.model;
 
+import homework.employee.util.DateUtil;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,13 +10,13 @@ public class Employee {
     private String surname;
     private String Id;
     private Double salary;
-    private String company;
+    private Company company;
     private String position;
     private boolean active = true;
     private Date dateOfBirthday;
     private Date registerDate = new Date();
 
-    public Employee(String name, String surname, String id, Double salary, String company, String position, Date dateOfBirthday) {
+    public Employee(String name, String surname, String id, Double salary, Company company, String position, Date dateOfBirthday) {
         this.name = name;
         this.surname = surname;
         Id = id;
@@ -73,11 +75,11 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String getCompany() {
+    public Company getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(Company company) {
         this.company = company;
     }
 
@@ -91,22 +93,6 @@ public class Employee {
     }
 
     @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", Id='" + Id + '\'' +
-                ", salary=" + salary +
-                ", company='" + company + '\'' +
-                ", position='" + position + '\'' +
-                ", active=" + active +
-                ", registerDate=" + registerDate +
-                ", dateOfBirthday=" + dateOfBirthday +
-                '}';
-    }
-
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -117,5 +103,20 @@ public class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(name, surname, Id, salary, company, position, active, dateOfBirthday, registerDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", Id='" + Id + '\'' +
+                ", salary=" + salary +
+                ", company='" + company + '\'' +
+                ", position='" + position + '\'' +
+                ", active=" + active +
+                ", registerDate=" + DateUtil.dateToString(registerDate) +
+                ", dateOfBirthday=" + DateUtil.dateToString(dateOfBirthday) +
+                '}';
     }
 }
