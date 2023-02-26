@@ -66,7 +66,7 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
         System.out.println("Please input id, name, surname, phone, doctor's id, register date and time(dd/mm/yyyy hh:mm)");
         String[] patientData = scanner.nextLine().split(",");
         String patientId = patientData[0];
-        Patient patientById = personStorage.getaPatientById(patientId);
+        Patient patientById = personStorage.getPatientById(patientId);
         if (patientById == null) {
             String doctorId = patientData[4];
             Doctor doctorById = personStorage.getDoctorById(doctorId);

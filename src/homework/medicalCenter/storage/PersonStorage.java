@@ -30,7 +30,6 @@ public class PersonStorage extends DateUtil {
 
 
     public void printAllDoctors() {
-        int a = 0;
         boolean bul = false;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor) {
@@ -70,7 +69,7 @@ public class PersonStorage extends DateUtil {
         return null;
     }
 
-    public Patient getaPatientById(String id) {
+    public Patient getPatientById(String id) {
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Patient) {
                 Patient patient = (Patient) persons[i];
