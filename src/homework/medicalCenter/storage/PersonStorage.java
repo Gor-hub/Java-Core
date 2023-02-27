@@ -1,5 +1,6 @@
 package homework.medicalCenter.storage;
 
+import homework.medicalCenter.Profession;
 import homework.medicalCenter.model.Doctor;
 import homework.medicalCenter.model.Patient;
 import homework.medicalCenter.model.Person;
@@ -81,12 +82,12 @@ public class PersonStorage extends DateUtil {
         return null;
     }
 
-    public void searchDoctorByProfession(String profession) {
+    public void searchDoctorByProfession(Profession profession) {
         boolean bul = false;
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor) {
                 Doctor doctor = (Doctor) persons[i];
-                if (doctor.getProfession().contains(profession)) {
+                if (doctor.getProfession() == profession) {
                     System.out.println(doctor);
                     bul = true;
                 }
@@ -118,7 +119,6 @@ public class PersonStorage extends DateUtil {
             if (persons[i] instanceof Patient) {
                 Patient patient = (Patient) persons[i];
                 if ((patient.getDoctor().getId()).contains(id)) {
-                    System.out.println(patient);
                     bul = true;
                 }
             }

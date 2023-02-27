@@ -4,14 +4,14 @@ import homework.medicalCenter.model.Doctor;
 import homework.medicalCenter.model.Patient;
 import homework.medicalCenter.storage.PersonStorage;
 import homework.medicalCenter.util.DateUtil;
-
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 
+
 public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
-    static Scanner scanner = new Scanner(System.in);
-    static PersonStorage personStorage = new PersonStorage();
+    private static Scanner scanner = new Scanner(System.in);
+    private static PersonStorage personStorage = new PersonStorage();
 
     public static void main(String[] args) throws ParseException {
         boolean isRan = true;
@@ -44,7 +44,7 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
                     personStorage.printTodaysPatient();
                     break;
                 default:
-                    System.out.println("Wrong command");
+                    System.err.println("Wrong command!");
             }
         }
     }
@@ -56,12 +56,12 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
         if (personStorage.getDoctorById(id) != null) {
             personStorage.searchPatientsByDoctorId(id);
         } else {
-            System.out.println("Doctor with id " + id + " does not exist");
+            System.err.println("Doctor with id " + id + " does not exist");
         }
     }
 
 
-    private static void addPatient() throws ParseException {
+    private static void addPatient() {
         personStorage.printAllPatients();
         System.out.println("Please input id, name, surname, phone, doctor's id, register date and time(dd/mm/yyyy hh:mm)");
         String[] patientData = scanner.nextLine().split(",");
@@ -71,36 +71,65 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
             String doctorId = patientData[4];
             Doctor doctorById = personStorage.getDoctorById(doctorId);
             if (doctorById != null) {
-                Date date = stringToDate(patientData[5]);
-                if (personStorage.checkRegisterTime(date)) {
-                    Patient patient = new Patient(patientId, patientData[1], patientData[2], patientData[3], doctorById, date);
-                    personStorage.addPerson(patient);
-                    System.out.println("Patient was added successfully");
-                } else {
-                    System.out.println("This time is busy!");
+                try {
+                    Date date = stringToDate(patientData[5]);
+                    if (personStorage.checkRegisterTime(date)) {
+                        Patient patient = new Patient(patientId, patientData[1], patientData[2], patientData[3], doctorById, date);
+                        personStorage.addPerson(patient);
+                        System.out.println("Patient was added successfully");
+
+                    } else {
+                        System.err.println("This time is busy!");
+                    }
+                } catch (ParseException e) {
+                    System.err.println("Format of date is false. Please try again ");
                 }
             } else {
-                System.out.println("Doctor with id " + doctorId + " does not exist");
+                System.err.println("Doctor with id " + doctorId + " does not exist");
             }
         } else {
-            System.out.println("Person with id " + patientId + " is already exists!");
+            System.err.println("Patient with id " + patientId + " is already exists!");
         }
+
     }
 
 
     private static void addDoctor() {
         personStorage.printAllDoctors();
-        System.out.println("Please input id,name,surname,phone,email,profession");
+        System.out.println("Please input id,name,surname,phone,email");
         String[] doctorData = scanner.nextLine().split(",");
-        String doctorId = doctorData[0];
-        Doctor doctorById = personStorage.getDoctorById(doctorId);
-        if (doctorById == null) {
-            Doctor doctor = new Doctor(doctorData[0], doctorData[1], doctorData[2], doctorData[3], doctorData[4], doctorData[5]);
-            personStorage.addPerson(doctor);
-            System.out.println("Doctor was added successfully");
+        if (doctorData.length == 5) {
+            String doctorId = doctorData[0];
+            Doctor doctorById = personStorage.getDoctorById(doctorId);
+            Profession profession = addProfessions();
+            if (doctorById == null) {
+                Doctor doctor = new Doctor(doctorData[0], doctorData[1], doctorData[2], doctorData[3], doctorData[4], profession);
+                personStorage.addPerson(doctor);
+                System.out.println("Doctor was added successfully");
+            } else {
+                System.err.println("Doctor with id " + doctorId + " is already exists");
+            }
         } else {
-            System.out.println("Person with id " + doctorId + " is already exists");
+            System.err.println("Not enough data!");
         }
+    }
+
+
+    private static Profession addProfessions() {
+        System.out.println("Please choose and input profession from: ");
+        Profession[] values = Profession.values();
+        for (Profession value : values) {
+            System.out.println(value);
+        }
+        try {
+            String profData = scanner.nextLine();
+            String professionStr = profData.toUpperCase();
+            return Profession.valueOf(professionStr);
+        } catch (IllegalArgumentException e) {
+            System.err.println("The profession you wrote does not exists");
+            System.out.println("Please try again!");
+        }
+        return addProfessions();
     }
 
     private static void deleteDoctorById() {
@@ -110,14 +139,13 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
         if (personStorage.getDoctorById(id) != null) {
             personStorage.deleteDoctorById(id);
         } else {
-            System.out.println("Doctor with id " + id + " does not exists!");
+            System.err.println("Doctor with id " + id + " does not exists!");
         }
     }
 
     private static void searchDoctorByProfession() {
         personStorage.printAllDoctors();
-        System.out.println("Please input profession");
-        String profession = scanner.nextLine();
+        Profession profession = addProfessions();
         personStorage.searchDoctorByProfession(profession);
     }
 
@@ -157,8 +185,9 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
                         break;
                     case PROFESSION:
                         System.out.println("Please input profession");
-                        String profession = scanner.nextLine();
+                        Profession profession = addProfessions();
                         doctor.setProfession(profession);
+
                         break;
                     default:
                         System.out.println("Wrong command");
