@@ -101,7 +101,7 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
         if (doctorData.length == 5) {
             String doctorId = doctorData[0];
             Doctor doctorById = personStorage.getDoctorById(doctorId);
-            Profession profession = addProfessions();
+            Profession profession = addProfession();
             if (doctorById == null) {
                 Doctor doctor = new Doctor(doctorData[0], doctorData[1], doctorData[2], doctorData[3], doctorData[4], profession);
                 personStorage.addPerson(doctor);
@@ -115,7 +115,7 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
     }
 
 
-    private static Profession addProfessions() {
+    private static Profession addProfession() {
         System.out.println("Please choose and input profession from: ");
         Profession[] values = Profession.values();
         for (Profession value : values) {
@@ -129,7 +129,7 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
             System.err.println("The profession you wrote does not exists");
             System.out.println("Please try again!");
         }
-        return addProfessions();
+        return addProfession();
     }
 
     private static void deleteDoctorById() {
@@ -145,7 +145,7 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
 
     private static void searchDoctorByProfession() {
         personStorage.printAllDoctors();
-        Profession profession = addProfessions();
+        Profession profession = addProfession();
         personStorage.searchDoctorByProfession(profession);
     }
 
@@ -185,7 +185,7 @@ public class MedicalCenterDemo extends DateUtil implements Commands, Commands1 {
                         break;
                     case PROFESSION:
                         System.out.println("Please input profession");
-                        Profession profession = addProfessions();
+                        Profession profession = addProfession();
                         doctor.setProfession(profession);
 
                         break;
