@@ -2,8 +2,10 @@ package homework.medicalCenter;
 
 import homework.medicalCenter.model.Doctor;
 import homework.medicalCenter.model.Patient;
+import homework.medicalCenter.model.Profession;
 import homework.medicalCenter.storage.PersonStorage;
 import homework.medicalCenter.util.DateUtil;
+
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
