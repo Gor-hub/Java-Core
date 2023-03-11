@@ -41,7 +41,7 @@ public class CollectionExample1 implements Commands {
     static void checkName() {
         System.out.println("Please input name");
         String name = scanner.nextLine();
-        boolean bul = check(name);
+        boolean bul = checkElementsOfArray(name);
         if (bul) {
             System.out.println("The name \"" + name + "\" is exists!");
         } else {
@@ -49,7 +49,7 @@ public class CollectionExample1 implements Commands {
         }
     }
 
-    static boolean check(String name) {
+    static boolean checkElementsOfArray(String name) {
         for (String s : array) {
             if (name.contains(s)) {
                 return true;
@@ -61,14 +61,14 @@ public class CollectionExample1 implements Commands {
     static void removeName() {
         System.out.println("Please input name");
         String name = scanner.nextLine();
-        boolean bul = check(name);
-        if (bul) {
+        boolean isName = checkElementsOfArray(name);
+        if (isName) {
             array.remove(name);
             System.out.println("The name \"" + name + "\" was successfully removed");
-            print();
+            printElements();
         } else {
             System.out.println("The name \"" + name + "\" is not exists!");
-            print();
+            printElements();
         }
         System.out.println();
     }
@@ -80,14 +80,14 @@ public class CollectionExample1 implements Commands {
         try {
             int index = Integer.parseInt(num);
             String name = data[1];
-            boolean bul = check(name);
+            boolean bul = checkElementsOfArray(name);
             if (!bul) {
                 array.add(index, name);
                 System.out.println("The name \"" + name + "\" is successfully added at index " + index);
-                print();
+                printElements();
             } else {
                 System.out.println("The name \"" + name + "\" is already exists!");
-                print();
+                printElements();
             }
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Index out of bounds!");
@@ -96,7 +96,7 @@ public class CollectionExample1 implements Commands {
         }
     }
 
-    static void print() {
+    static void printElements() {
         int index = 0;
         for (String s : array) {
             System.out.print((index++) + ":[" + s + "] ");

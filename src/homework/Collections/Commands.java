@@ -8,7 +8,7 @@ public interface Commands {
 
     static void printCommands(){
         System.out.println("Please input " + EXIT + " for exit");
-        System.out.println("Please input " + CHECK_NAME + " for check name");
+        System.out.println("Please input " + CHECK_NAME + " for checkElementsOfArray name");
         System.out.println("Please input " + REMOVE_NAME + " for remove name");
         System.out.println("Please input " + ADD_NAME_BY_INDEX + " for add name by index");
     }
