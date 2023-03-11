@@ -89,8 +89,8 @@ public class CollectionExample1 implements Commands {
                 System.out.println("The name \"" + name + "\" is already exists!");
                 print();
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Incorrect format of input!");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Index out of bounds!");
         } catch (NumberFormatException e) {
             System.out.println("Format of index is incorrect!");
         }
