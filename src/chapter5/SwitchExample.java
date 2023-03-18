@@ -1,36 +1,39 @@
 package chapter5;
 
 public class SwitchExample {
+
     public static void main(String[] args) {
-        int n = 3;
-        int a = 7;
+        int n = 9;
+        int a = 5;
         switch (n) {
             case 1:
-                System.out.println("n = 1");
+                System.out.println("n-? 1 ?");
                 break;
             case 2:
-                System.out.println("n = 2");
-            case 8:
+                System.out.println("n-? 2 ?");
+                break;
+            case 3:
                 switch (a) {
                     case 1:
-                        System.out.println("a = 1");
+                        System.out.println("a-? ??? ?");
                         break;
                     case 2:
-                        System.out.println("a = 2");
+                        System.out.println("a-? 2 ?");
                         break;
                     default:
-                        System.out.println("a doesn't exist in these cases");
-                        break;
+                        System.out.println("a-? ?? ??? ? ?? ??????");
                 }
-            case 3:
-            case 4:
-                System.out.println("n = 3 or 4");
                 break;
+            case 4:
+                System.out.println("n -? ??? 3 ? ??? 4");
             case 7:
-                System.out.println("n = 7");
+                System.out.println("n-? 7 ?");
+                break;
+            case 9:
+                System.out.println("n-? 9 ?");
                 break;
             default:
-                System.out.println("n doesn't exist in these cases");
+                System.out.println("n-? ?? 1 ? ?? 2 ? ?? 7");
                 break;
         }
     }

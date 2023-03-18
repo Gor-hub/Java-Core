@@ -1,4 +1,4 @@
-package homework.homework9;
+package homework.bracechecker;
 
 import java.util.Scanner;
 

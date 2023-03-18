@@ -1,4 +1,4 @@
-package classwork;
+package classwork.student;
 
 import java.util.Scanner;
 
