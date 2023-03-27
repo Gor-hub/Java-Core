@@ -52,7 +52,7 @@ public class FileUtil1 implements Commands {
             boolean isFile = false;
             for (File file1 : list) {
                 String name = file1.getName();
-                if (name.equals(fileName)) {
+                if (file1.isFile() && name.equals(fileName)) {
                     isFile = true;
                 }
             }
@@ -75,12 +75,10 @@ public class FileUtil1 implements Commands {
         File file = new File(path);
         try {
             File[] list = file.listFiles();
-            boolean isTxt = false;
             boolean isKeyword = false;
             for (File file1 : list) {
                 String name = file1.getName();
-                if (name.contains(".txt")) {
-                    isTxt = true;
+                if (file1.isFile() && name.contains(".txt")) {
                     if (name.equals(keyword)) {
                         System.out.println(name);
                         isKeyword = true;

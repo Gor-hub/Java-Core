@@ -10,14 +10,14 @@ public class DataIOStream {
         read();
 
     }
-
-    public static void write() throws IOException {
-        DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(FILE_PATH));
-        outputStream.writeInt(33);
-        outputStream.writeBoolean(false);
-        outputStream.writeUTF("Hello");
-        outputStream.close();
-    }
+//
+//    public static void write() throws IOException {
+//        DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(FILE_PATH));
+//        outputStream.writeInt(33);
+//        outputStream.writeBoolean(false);
+//        outputStream.writeUTF("Hello");
+//        outputStream.close();
+//    }
 
     public static void read() throws IOException {
         DataInputStream inputStream = new DataInputStream(new FileInputStream(FILE_PATH));
